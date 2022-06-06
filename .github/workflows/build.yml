@@ -30,16 +30,12 @@ jobs:
     - name: Go Coverage Badge
       uses: tj-actions/coverage-badge-go@v1.2
       with:
+        green: 80
         filename: coverage.out
         text: coverage
 
-    - name: Verify Changed files
-      uses: tj-actions/verify-changed-files@v9.1
-      id: verify-changed-files
-      with:
-        files: README.md
-
-    - uses: stefanzweifel/git-auto-commit-action@v4
+    - name: Commit doc changes
+      uses: stefanzweifel/git-auto-commit-action@v4
       id: auto-commit-action
       with:
         commit_message: docs(readme): update coverage badge
