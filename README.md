@@ -1,4 +1,4 @@
-![coverage](https://img.shields.io/badge/coverage-100.0%25-brightgreen)
+![coverage](https://img.shields.io/badge/coverage-82.5%25-brightgreen)
 
 # bencode
 
