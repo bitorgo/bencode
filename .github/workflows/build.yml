@@ -33,14 +33,11 @@ jobs:
         filename: coverage.out
         text: coverage
 
-    - name: Commit doc changes
-      uses: stefanzweifel/git-auto-commit-action@v4
-      id: auto-commit-action
-      with:
-        commit_message: "docs(readme): update coverage badge"
-        skip_fetch: true
-        skip_checkout: true
-        file_pattern: ./README.md
+    - name: Commit files
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -am "docs(readme): update coverage badge"
 
     - name: Push changes
       if: steps.verify-changed-files.outputs.files_changed == 'true'
