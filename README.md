@@ -1,5 +1,5 @@
-[![build](https://github.com/bitorgo/bencode/actions/workflows/main.yml/badge.svg?branch=main&event=push)](https://github.com/bitorgo/bencode/actions/workflows/main.yml)
 [![Go Reference](https://pkg.go.dev/badge/github.com/bitorgo/bencode.svg)](https://pkg.go.dev/github.com/bitorgo/bencode)
+[![build](https://github.com/bitorgo/bencode/actions/workflows/build.yml/badge.svg?branch=main&event=push)](https://github.com/bitorgo/bencode/actions/workflows/build.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/bitorgo/bencode)](https://goreportcard.com/report/github.com/bitorgo/bencode)
 
 # bencode
