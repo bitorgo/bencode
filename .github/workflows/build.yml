@@ -30,9 +30,7 @@ jobs:
     - name: Go Coverage Badge
       uses: tj-actions/coverage-badge-go@v1.2
       with:
-        green: 90
         filename: coverage.out
-        yellow: 80
         text: coverage
         target: README.md
 
