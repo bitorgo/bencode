@@ -38,7 +38,7 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v4
       id: auto-commit-action
       with:
-        commit_message: docs(readme): update coverage badge
+        commit_message: "docs(readme): update coverage badge"
         skip_fetch: true
         skip_checkout: true
         file_pattern: ./README.md
