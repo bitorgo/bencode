@@ -46,11 +46,14 @@ func NewEncoder(w io.Writer) *Encoder {
 
 // Encode
 func (e *Encoder) Encode(v any) error {
-	switch x := v.(type) {
-	case string:
-		return e.encodeString(x)
-	case int:
-		return e.encodeInt(x)
+	val := reflect.ValueOf(v)
+	switch val.Kind() {
+	case reflect.String:
+		return e.encodeString(val)
+	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
+		return e.encodeInt(val)
+	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
+		return e.encodeUint(val)
 	default:
 		return &UnsupportedTypeError{Type: reflect.TypeOf(v)}
 	}
@@ -66,7 +69,8 @@ func (e *Encoder) writeString(s string) error {
 	return nil
 }
 
-func (e *Encoder) encodeString(s string) error {
+func (e *Encoder) encodeString(val reflect.Value) error {
+	s := val.String()
 	n := strconv.Itoa(len(s))
 	prefix := n + ":"
 
@@ -74,8 +78,14 @@ func (e *Encoder) encodeString(s string) error {
 	return e.writeString(ts)
 }
 
-func (e *Encoder) encodeInt(n int) error {
-	ns := strconv.Itoa(n)
+func (e *Encoder) encodeInt(val reflect.Value) error {
+	ns := strconv.FormatInt(val.Int(), 10)
+	ts := "i" + ns + "e"
+	return e.writeString(ts)
+}
+
+func (e *Encoder) encodeUint(val reflect.Value) error {
+	ns := strconv.FormatUint(val.Uint(), 10)
 	ts := "i" + ns + "e"
 	return e.writeString(ts)
 }
