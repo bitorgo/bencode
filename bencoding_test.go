@@ -37,6 +37,12 @@ func TestMarshalAndUnmarshal(t *testing.T) {
 			Encoding: "i-123e",
 			Out:      new(int),
 		},
+		{
+			Name:     "uint",
+			Value:    uint(123),
+			Encoding: "i123e",
+			Out:      new(uint),
+		},
 		// {
 		// 	Name:     "list of strings",
 		// 	Value:    []string{"1", "2", "3"},
